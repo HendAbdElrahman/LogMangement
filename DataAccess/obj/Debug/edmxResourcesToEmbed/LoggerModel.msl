@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="LoggerDBModelStoreContainer" CdmEntityContainer="LoggerDBEntities">
+    <EntitySetMapping Name="Loggers">
+      <EntityTypeMapping TypeName="LoggerDBModel.Logger">
+        <MappingFragment StoreEntitySet="Logger">
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="LogLevel" ColumnName="LogLevel" />
+          <ScalarProperty Name="LogTime" ColumnName="LogTime" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

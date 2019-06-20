@@ -1,0 +1,9 @@
+E:\Hend\POC Shahine\LogManagement\IBusiness\bin\Debug\IBusiness.dll
+E:\Hend\POC Shahine\LogManagement\IBusiness\bin\Debug\IBusiness.pdb
+E:\Hend\POC Shahine\LogManagement\IBusiness\bin\Debug\ViewModels.dll
+E:\Hend\POC Shahine\LogManagement\IBusiness\bin\Debug\ViewModels.pdb
+E:\Hend\POC Shahine\LogManagement\IBusiness\obj\Debug\IBusiness.csprojAssemblyReference.cache
+E:\Hend\POC Shahine\LogManagement\IBusiness\obj\Debug\IBusiness.csproj.CoreCompileInputs.cache
+E:\Hend\POC Shahine\LogManagement\IBusiness\obj\Debug\IBusiness.csproj.CopyComplete
+E:\Hend\POC Shahine\LogManagement\IBusiness\obj\Debug\IBusiness.dll
+E:\Hend\POC Shahine\LogManagement\IBusiness\obj\Debug\IBusiness.pdb

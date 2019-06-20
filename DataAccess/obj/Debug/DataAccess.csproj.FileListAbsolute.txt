@@ -1,0 +1,15 @@
+E:\Hend\POC Shahine\LogManagement\DataAccess\bin\Debug\DataAccess.dll.config
+E:\Hend\POC Shahine\LogManagement\DataAccess\bin\Debug\DataAccess.dll
+E:\Hend\POC Shahine\LogManagement\DataAccess\bin\Debug\DataAccess.pdb
+E:\Hend\POC Shahine\LogManagement\DataAccess\bin\Debug\EntityFramework.dll
+E:\Hend\POC Shahine\LogManagement\DataAccess\bin\Debug\EntityFramework.SqlServer.dll
+E:\Hend\POC Shahine\LogManagement\DataAccess\bin\Debug\IDataAccess.dll
+E:\Hend\POC Shahine\LogManagement\DataAccess\bin\Debug\IDataAccess.pdb
+E:\Hend\POC Shahine\LogManagement\DataAccess\bin\Debug\IDataAccess.dll.config
+E:\Hend\POC Shahine\LogManagement\DataAccess\bin\Debug\EntityFramework.xml
+E:\Hend\POC Shahine\LogManagement\DataAccess\bin\Debug\EntityFramework.SqlServer.xml
+E:\Hend\POC Shahine\LogManagement\DataAccess\obj\Debug\DataAccess.csprojAssemblyReference.cache
+E:\Hend\POC Shahine\LogManagement\DataAccess\obj\Debug\DataAccess.csproj.CoreCompileInputs.cache
+E:\Hend\POC Shahine\LogManagement\DataAccess\obj\Debug\DataAccess.csproj.CopyComplete
+E:\Hend\POC Shahine\LogManagement\DataAccess\obj\Debug\DataAccess.dll
+E:\Hend\POC Shahine\LogManagement\DataAccess\obj\Debug\DataAccess.pdb
