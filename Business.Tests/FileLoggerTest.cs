@@ -14,6 +14,7 @@ namespace Business.Tests
         private ILogger<Modules> fileLogger;
         Mock<IParser<Modules>> parser;
         Mock<IParserFactory<Modules>> parserFactory;
+        private Modules module;
 
         string jsonData = @"{
    'channel': {
@@ -37,7 +38,6 @@ namespace Business.Tests
    }
 }";
 
-        private Modules module;
 
         DomainModels.Logger log = new DomainModels.Logger()
         {
