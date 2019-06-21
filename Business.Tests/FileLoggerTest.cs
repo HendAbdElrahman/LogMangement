@@ -11,7 +11,6 @@ namespace Business.Tests
     public class FileLoggerTest
     {
         private ILogger<Company> fileLogger;
-
         Mock<IParser<Company>> parser;
         Mock<IParserFactory<Company>> parserFactory;
 
@@ -36,7 +35,9 @@ namespace Business.Tests
             };
             
             parser = new Mock<IParser<Company>>();
+
             parser.Setup(x => x.Parse(jsonData)).Returns(company);
+
             parserFactory = new Mock<IParserFactory<Company>>();
         }
 
@@ -50,7 +51,7 @@ namespace Business.Tests
             fileLogger = new FileLogger<Company>(parser.Object, parserFactory.Object);
 
             //act
-            fileLogger.AddWarningLog(jsonData);
+            fileLogger.AddWarningLogAsync(jsonData);
         }
 
         [TestMethod]
@@ -59,16 +60,14 @@ namespace Business.Tests
         {
             //arrange
             jsonData = null;
+
             parserFactory.Setup(O => O.Build(jsonData)).Returns(new XMLParser<Company>());
+
             fileLogger = new FileLogger<Company>(parser.Object, parserFactory.Object);
 
             //act
-            fileLogger.AddWarningLog(jsonData);
+            fileLogger.AddWarningLogAsync(jsonData);
         }
-        [TestCleanup]
-        public void TestCleanUp()
-        {
-           // repository.Dispose();
-        }
+
     }
 }

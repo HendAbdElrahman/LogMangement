@@ -8,6 +8,7 @@ namespace ViewModels
     {
         [XmlAttribute(AttributeName = "Id")]
         public int Id;
+
         [XmlAttribute(AttributeName = "Name")]
         public string Name;
     }

@@ -4,7 +4,7 @@ namespace Business.Helpers
 {
     public class Helper
     {
-        public string PrintTModelPropertyAndValue<T>(object output)
+        public string ConvertTModelPropertyAndValueToString<T>(object output)
         {
             string objectAsXmlString;
 

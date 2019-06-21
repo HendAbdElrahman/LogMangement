@@ -37,6 +37,7 @@ namespace DataAccess
         public void Update(T entity)
         {
             dbContext.Set<T>().Attach(entity);
+
             dbContext.Entry(entity).State = EntityState.Modified;
         }
 

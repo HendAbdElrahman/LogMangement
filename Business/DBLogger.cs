@@ -20,17 +20,17 @@ namespace Business
 
         }
 
-        public void AddWarningLog(string data)
+        public void AddWarningLogAsync(string data)
         {
             AddLog(data, LogLevel.Warning.ToString());
         }
 
-        public void AddInfoLog(string data)
+        public void AddInfoLogAsync(string data)
         {
             AddLog(data, LogLevel.Info.ToString());
         }
 
-        public void AddFatelLog(string data)
+        public void AddFatelLogAsync(string data)
         {
             AddLog(data, LogLevel.Fatel.ToString());
         }
@@ -39,9 +39,13 @@ namespace Business
         {
             if (data == null)
                 throw new ArgumentNullException();
+
             IParser<T> parser = this.parserFactory.Build(data);
+
             var parsedData = parser.Parse(data);
-            var prop = new Helper().PrintTModelPropertyAndValue<T>(parsedData);
+
+            var prop = new Helper().ConvertTModelPropertyAndValueToString<T>(parsedData);
+
             saveToDB(prop, logType);
         }
 

@@ -1,8 +1,8 @@
-﻿using System;
-using IBusiness;
+﻿using IBusiness;
 using IDataAccess;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using System;
 using ViewModels;
 
 namespace Business.Tests
@@ -36,9 +36,13 @@ namespace Business.Tests
                 Name = "Friska4433"
             };
             repository = new Mock<IRepository<DomainModels.Logger>>();
+
             repository.Setup(o => o.Add(log)).Returns(log);
+
             parser = new Mock<IParser<Company>>();
+
             parser.Setup(x => x.Parse(xmlData)).Returns(company);
+
             parserFactory = new Mock<IParserFactory<Company>>();
         }
 
@@ -48,10 +52,11 @@ namespace Business.Tests
         {
             //arrange
             parserFactory.Setup(O => O.Build(xmlData)).Returns(new XMLParser<Company>());
+
             dbLogger = new DBLogger<Company>(parser.Object, parserFactory.Object, repository.Object);
 
             //act
-            dbLogger.AddWarningLog(xmlData);
+            dbLogger.AddWarningLogAsync(xmlData);
         }
 
         [TestMethod]
@@ -60,11 +65,13 @@ namespace Business.Tests
         {
             //arrange
             xmlData = null;
+
             parserFactory.Setup(O => O.Build(xmlData)).Returns(new XMLParser<Company>());
+
             dbLogger = new DBLogger<Company>(parser.Object, parserFactory.Object, repository.Object);
 
             //act
-            dbLogger.AddWarningLog(xmlData);
+            dbLogger.AddWarningLogAsync(xmlData);
         }
         [TestCleanup]
         public void TestCleanUp()

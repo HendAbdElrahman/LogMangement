@@ -8,6 +8,7 @@ namespace ViewModels
     {
         [XmlElement]
         public Channel channel { get; set; }
+
         [XmlElement]
         public Image image { get; set; }
     }

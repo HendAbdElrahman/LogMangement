@@ -13,9 +13,8 @@ namespace DataAccess.Tests
         [TestInitialize]
         public void TestInitialize()
         {
-
             repo = new Repository<Logger>(new UnitOfWork());
-            // insert test data
+
             logger = new Logger
             {
                 LogLevel = "Warnning",
@@ -29,6 +28,7 @@ namespace DataAccess.Tests
         public void TestCleanUp()
         {
             repo.Delete(logger);
+
             repo.Dispose();
         }
 
@@ -36,15 +36,13 @@ namespace DataAccess.Tests
         [TestMethod]
         public void Add_ValidEntity_SaveSucess()
         {
-            //arrange
-
             //act
             repo.Add(logger);
+
             repo.SaveChanges();
 
             //assert
             Assert.IsTrue(logger.Id > 0);
-
         }
 
         [TestMethod]
@@ -52,6 +50,7 @@ namespace DataAccess.Tests
         {
             //arrange
             repo.Add(logger);
+
             repo.SaveChanges();
 
             //act
@@ -67,12 +66,14 @@ namespace DataAccess.Tests
         {
             //arrange
             repo.Add(logger);
+
             repo.SaveChanges();
 
             //act
             var logLevel = "Error";
 
             var TempFile = repo.Find(logger.Id);
+
             TempFile.LogLevel = logLevel;
 
             repo.Update(TempFile);

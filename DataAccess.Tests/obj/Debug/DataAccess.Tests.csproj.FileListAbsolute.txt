@@ -22,3 +22,6 @@ E:\Hend\POC Shahine\LogManagement\DataAccess.Tests\obj\Debug\DataAccess.Tests.cs
 E:\Hend\POC Shahine\LogManagement\DataAccess.Tests\obj\Debug\DataAccess.Tests.csproj.CopyComplete
 E:\Hend\POC Shahine\LogManagement\DataAccess.Tests\obj\Debug\DataAccess.Tests.dll
 E:\Hend\POC Shahine\LogManagement\DataAccess.Tests\obj\Debug\DataAccess.Tests.pdb
+E:\Hend\POC Shahine\LogManagement\DataAccess.Tests\bin\Debug\DataAccess.Tests.dll.config
+E:\Hend\POC Shahine\LogManagement\DataAccess.Tests\bin\Debug\EntityFramework.SqlServer.dll
+E:\Hend\POC Shahine\LogManagement\DataAccess.Tests\bin\Debug\EntityFramework.SqlServer.xml
