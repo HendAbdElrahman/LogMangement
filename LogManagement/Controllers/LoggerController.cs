@@ -1,8 +1,5 @@
 ﻿using IBusiness;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
@@ -21,27 +18,25 @@ namespace LogManagement.Controllers
 
         [HttpPost]
         [Route("LogWarning")]
-        //[ActionName("LogWarning")]
         public HttpResponseMessage LogWarning([FromBody] string message)
         {
             try
             {
-                this.logger.AddWarningLog(message);
-                return Request.CreateResponse(HttpStatusCode.OK,"OK") ;
+                logger.AddWarningLog(message);
+                return Request.CreateResponse(HttpStatusCode.OK, "Added successfully") ;
             }
-            catch (FormatException fEx)
+            catch (FormatException formatException)
             {
-                return Request.CreateResponse(HttpStatusCode.InternalServerError, fEx);
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, formatException);
             }
-            catch (ArgumentNullException AEX)
+            catch (ArgumentNullException argumentNullException)
             {
-                return Request.CreateResponse(HttpStatusCode.InternalServerError, AEX);
-                // return Request.CreateResponse(HttpStatusCode.InternalServerError, fEx);
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, argumentNullException);
             }
-
-            catch (InvalidOperationException ex)
+            catch (InvalidOperationException invalidOperationException)
             {
-                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.GetType().FullName + ex.Message);
+                //return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.GetType().FullName + ex.Message);
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, invalidOperationException);
             }
             catch (Exception ex)
             {
@@ -74,7 +69,7 @@ namespace LogManagement.Controllers
         {
             try
             {
-                this.logger.AddFatelLog(message);
+                logger.AddFatelLog(message);
                 return Request.CreateResponse(HttpStatusCode.OK, "OK");
             }
             catch (FormatException fEx)

@@ -1,7 +1,5 @@
 ﻿using System;
-using DataAccess;
 using IBusiness;
-using IDataAccess;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using ViewModels;
@@ -17,8 +15,7 @@ namespace Business.Tests
         Mock<IParser<Company>> parser;
         Mock<IParserFactory<Company>> parserFactory;
 
-        string jsonData = @"{""Name"":""Rick"",""Id"":""1""}";
-        private string data = "Data";
+        string jsonData = @"{""Name"":""Integrant Inc"",""Id"":""1""}";
         private Company company;
 
         DomainModels.Logger log = new DomainModels.Logger()
@@ -35,7 +32,7 @@ namespace Business.Tests
             company = new Company()
             {
                 Id = 3,
-                Name = "Friska4433"
+                Name = "Integrant Inc"
             };
             
             parser = new Mock<IParser<Company>>();
@@ -56,15 +53,22 @@ namespace Business.Tests
             fileLogger.AddWarningLog(jsonData);
         }
 
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void Build_PassNullXMLData_ThrowArgumentNullException()
+        {
+            //arrange
+            jsonData = null;
+            parserFactory.Setup(O => O.Build(jsonData)).Returns(new XMLParser<Company>());
+            fileLogger = new FileLogger<Company>(parser.Object, parserFactory.Object);
+
+            //act
+            fileLogger.AddWarningLog(jsonData);
+        }
         [TestCleanup]
         public void TestCleanUp()
         {
-           // repository.re(downloadedFile);
            // repository.Dispose();
-        }
-        [TestMethod]
-        public void TestMethod1()
-        {
         }
     }
 }

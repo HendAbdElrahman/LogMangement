@@ -1,10 +1,5 @@
 ﻿using IBusiness;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using System.Xml;
 using ViewModels;
 
 namespace LogManagement.Controllers
@@ -26,21 +21,6 @@ namespace LogManagement.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
-
-            //var jsonString = @"{""Name"":""Rick"",""Id"":""1""}";
-            //this.logger.AddLog(xmlString);
-
-            //var xmlString = @"<""Company""><""Name"">""Tove""</""Name""><""Id"">""Jani""</""Id""></""Company"">";
-            //XmlDocument doc = new XmlDocument();
-            //string xmlString = System.IO.File.ReadAllText("E:\\temp.xml");
-            //XmlDocument doc = new XmlDocument();
-
-            var xmlString = @"<?xml version='1.0' encoding='utf-8' ?>
-            <Company Id='1' Name='Friska'/>";
-
-            this.logger.AddWarningLog(xmlString);
-
             return View();
         }
 

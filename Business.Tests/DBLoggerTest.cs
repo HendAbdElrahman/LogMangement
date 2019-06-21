@@ -1,5 +1,4 @@
 ﻿using System;
-using DataAccess;
 using IBusiness;
 using IDataAccess;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -54,27 +53,11 @@ namespace Business.Tests
             //act
             dbLogger.AddWarningLog(xmlData);
         }
-        //[TestMethod]
-        //[ExpectedException(typeof(InvalidOperationException))]
-        //public void TestThroEx()
-        //{
-        //    Mock<IUserEntity> user = new Mock<IUserEntity>();
-        //    Mock<IUserRepository<int>> repo = new Mock<IUserRepository<int>>();
-        //    UserManagement userManagement = new UserManagement(repo.Object);
-        //    repo.Setup(x => x.GetById(It.IsAny<int>())).Throws(new InvalidOperationException());
-        //    var res = userManagement.GetById(-1);
 
-        //}
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void TestThroEx()
+        public void Build_PassNullXMLData_ThrowArgumentNullException()
         {
-            /* //arrange
-             xmlData = null;
-             //act
-             parserFactory.Setup(x => x.Build(xmlData)).Throws(new ArgumentNullException());
-             */
-
             //arrange
             xmlData = null;
             parserFactory.Setup(O => O.Build(xmlData)).Returns(new XMLParser<Company>());
@@ -86,8 +69,7 @@ namespace Business.Tests
         [TestCleanup]
         public void TestCleanUp()
         {
-           // repository.re(downloadedFile);
-           // repository.Dispose();
+            //repository.Dispose();
         }
     }
 }

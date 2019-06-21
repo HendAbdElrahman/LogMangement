@@ -60,19 +60,5 @@ namespace Business
                 sw1.Close();
             }
         }
-
-        //private string PrintTModelPropertyAndValue<T>(object tmodelObj)
-        //{
-        //    string str = "";
-        //    foreach (var prop in typeof(T).GetFields())
-        //    {
-        //        str += prop.Name.ToString();
-        //        str += " :  ";
-        //        str += prop.GetValue(tmodelObj);
-        //        str += ",   ";
-        //    }
-        //    return str;
-        //}
-
     }
 }
