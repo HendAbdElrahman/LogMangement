@@ -22,7 +22,7 @@ namespace LogManagement.Controllers
         {
             try
             {
-                logger.AddWarningLogAsync(message);
+                logger.AddWarningLog(message);
                 return Request.CreateResponse(HttpStatusCode.OK, "Added successfully") ;
             }
             catch (FormatException formatException)
@@ -50,7 +50,7 @@ namespace LogManagement.Controllers
         {
             try
             {
-                this.logger.AddInfoLogAsync(message);
+                this.logger.AddInfoLog(message);
                 return Request.CreateResponse(HttpStatusCode.OK, "OK");
             }
             catch (FormatException fEx)
@@ -69,7 +69,7 @@ namespace LogManagement.Controllers
         {
             try
             {
-                logger.AddFatelLogAsync(message);
+                logger.AddFatelLog(message);
                 return Request.CreateResponse(HttpStatusCode.OK, "OK");
             }
             catch (FormatException fEx)

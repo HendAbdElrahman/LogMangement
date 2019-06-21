@@ -3,10 +3,10 @@ namespace IBusiness
 {
     public interface ILogger<T>
     {
-        void AddWarningLogAsync(string msg);
+        void AddWarningLog(string msg);
 
-        void AddInfoLogAsync(string msg);
+        void AddInfoLog(string msg);
 
-        void AddFatelLogAsync(string msg);
+        void AddFatelLog(string msg);
     }
 }

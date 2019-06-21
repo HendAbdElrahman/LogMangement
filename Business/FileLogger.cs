@@ -21,23 +21,23 @@ namespace Business
             this.parserFactory = parserFactory;
         }
 
-        public async void AddWarningLogAsync(string data)
+        public void AddWarningLog(string data)
         {
-            await AddLogAsync(data, LogLevel.Warning.ToString());
+            AddLog(data, LogLevel.Warning.ToString());
         }
 
-        public async void AddInfoLogAsync(string data)
+        public void AddInfoLog(string data)
         {
-            await AddLogAsync(data, LogLevel.Info.ToString());
+            AddLog(data, LogLevel.Info.ToString());
         }
 
-        public async void AddFatelLogAsync(string data)
+        public void AddFatelLog(string data)
         {
-            await AddLogAsync(data, LogLevel.Fatel.ToString());
+            AddLog(data, LogLevel.Fatel.ToString());
         }
 
 
-        private async Task AddLogAsync(string data, string logType)
+        private void AddLog(string data, string logType)
         {
             if (data == null)
                 throw new ArgumentNullException();
@@ -48,7 +48,7 @@ namespace Business
 
             var prop = new Helper().ConvertTModelPropertyAndValueToString<T>(parsedData);
 
-            await SaveToFileAsync(prop, logType);
+            saveToFile(prop, logType);
         }
 
 

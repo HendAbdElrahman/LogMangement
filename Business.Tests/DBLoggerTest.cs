@@ -56,7 +56,7 @@ namespace Business.Tests
             dbLogger = new DBLogger<Company>(parser.Object, parserFactory.Object, repository.Object);
 
             //act
-            dbLogger.AddWarningLogAsync(xmlData);
+            dbLogger.AddWarningLog(xmlData);
         }
 
         [TestMethod]
@@ -71,7 +71,7 @@ namespace Business.Tests
             dbLogger = new DBLogger<Company>(parser.Object, parserFactory.Object, repository.Object);
 
             //act
-            dbLogger.AddWarningLogAsync(xmlData);
+            dbLogger.AddWarningLog(xmlData);
         }
         [TestCleanup]
         public void TestCleanUp()

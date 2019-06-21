@@ -20,17 +20,17 @@ namespace Business
 
         }
 
-        public void AddWarningLogAsync(string data)
+        public void AddWarningLog(string data)
         {
             AddLog(data, LogLevel.Warning.ToString());
         }
 
-        public void AddInfoLogAsync(string data)
+        public void AddInfoLog(string data)
         {
             AddLog(data, LogLevel.Info.ToString());
         }
 
-        public void AddFatelLogAsync(string data)
+        public void AddFatelLog(string data)
         {
             AddLog(data, LogLevel.Fatel.ToString());
         }

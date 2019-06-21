@@ -51,7 +51,7 @@ namespace Business.Tests
             fileLogger = new FileLogger<Company>(parser.Object, parserFactory.Object);
 
             //act
-            fileLogger.AddWarningLogAsync(jsonData);
+            fileLogger.AddWarningLog(jsonData);
         }
 
         [TestMethod]
@@ -66,7 +66,7 @@ namespace Business.Tests
             fileLogger = new FileLogger<Company>(parser.Object, parserFactory.Object);
 
             //act
-            fileLogger.AddWarningLogAsync(jsonData);
+            fileLogger.AddWarningLog(jsonData);
         }
 
     }
