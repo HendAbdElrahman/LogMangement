@@ -1,12 +1,14 @@
 ﻿
+using System.Threading.Tasks;
+
 namespace IBusiness
 {
     public interface ILogger<T>
     {
-        void AddWarningLog(string msg);
+         Task AddWarningLogAsync(string msg);
 
-        void AddInfoLog(string msg);
+         Task AddInfoLogAsync(string msg);
 
-        void AddFatelLog(string msg);
+         Task AddFatelLogAsync(string msg);
     }
 }

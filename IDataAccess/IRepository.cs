@@ -18,6 +18,8 @@ namespace IDataAccess
 
         void SaveChanges();
 
+        Task SaveChangesAsync();
+
         void Delete(T entity);
     }
 }

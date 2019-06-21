@@ -52,6 +52,10 @@ namespace DataAccess
             _unitOfWork?.Dispose();
         }
 
+        public async System.Threading.Tasks.Task SaveChangesAsync()
+        {
+            await dbContext.SaveChangesAsync();
+        }
     }
 
 }

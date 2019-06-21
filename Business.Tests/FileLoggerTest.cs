@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using IBusiness;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -33,7 +34,7 @@ namespace Business.Tests
                 Id = 3,
                 Name = "Integrant Inc"
             };
-            
+
             parser = new Mock<IParser<Company>>();
 
             parser.Setup(x => x.Parse(jsonData)).Returns(company);
@@ -41,6 +42,8 @@ namespace Business.Tests
             parserFactory = new Mock<IParserFactory<Company>>();
         }
 
+
+        #region SyncMethods
 
         [TestMethod]
         public void AddWarningLog_PassValidXMLSources_WorkCorrectly()
@@ -51,13 +54,14 @@ namespace Business.Tests
             fileLogger = new FileLogger<Company>(parser.Object, parserFactory.Object);
 
             //act
-            fileLogger.AddWarningLog(jsonData);
+            fileLogger.AddWarningLogAsync(jsonData);
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException))]
-        public void Build_PassNullXMLData_ThrowArgumentNullException()
+        [ExpectedException(typeof(ArgumentException))]
+        public async Task Build_PassNullXMLData_ThrowArgumentNullExceptionAsync()
         {
+            
             //arrange
             jsonData = null;
 
@@ -66,8 +70,10 @@ namespace Business.Tests
             fileLogger = new FileLogger<Company>(parser.Object, parserFactory.Object);
 
             //act
-            fileLogger.AddWarningLog(jsonData);
+            await fileLogger.AddWarningLogAsync(jsonData);
         }
+
+        #endregion
 
     }
 }

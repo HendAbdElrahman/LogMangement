@@ -3,6 +3,7 @@ using IDataAccess;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System;
+using System.Threading.Tasks;
 using ViewModels;
 
 namespace Business.Tests
@@ -56,12 +57,24 @@ namespace Business.Tests
             dbLogger = new DBLogger<Company>(parser.Object, parserFactory.Object, repository.Object);
 
             //act
-            dbLogger.AddWarningLog(xmlData);
+            dbLogger.AddWarningLogAsync(xmlData);
+        }
+
+        [TestMethod]
+        public async Task AddWarningLog_PassValidXMLSourcesAsync_WorkCorrectlyAsync()
+        {
+            //arrange
+            parserFactory.Setup(O => O.Build(xmlData)).Returns(new XMLParser<Company>());
+
+            dbLogger = new DBLogger<Company>(parser.Object, parserFactory.Object, repository.Object);
+
+            //act
+            await  dbLogger.AddWarningLogAsync(xmlData);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void Build_PassNullXMLData_ThrowArgumentNullException()
+        public async Task Build_PassNullXMLDataAsync_ThrowArgumentNullException()
         {
             //arrange
             xmlData = null;
@@ -71,8 +84,9 @@ namespace Business.Tests
             dbLogger = new DBLogger<Company>(parser.Object, parserFactory.Object, repository.Object);
 
             //act
-            dbLogger.AddWarningLog(xmlData);
+            await dbLogger.AddWarningLogAsync(xmlData);
         }
+
         [TestCleanup]
         public void TestCleanUp()
         {

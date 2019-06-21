@@ -51,7 +51,7 @@ namespace LogManagement
             container.RegisterType(typeof(IParser<>), typeof(XMLParser<>), new TransientLifetimeManager());
             container.RegisterType(typeof(IParserFactory<>), typeof(ParserFactory<>), new TransientLifetimeManager());
             container.RegisterType(typeof(ILogger<>), typeof(FileLogger<>), new TransientLifetimeManager());
-            //container.RegisterType(typeof(ILogger<>), typeof(DBLogger<>), new TransientLifetimeManager());
+            container.RegisterType(typeof(ILogger<>), typeof(DBLogger<>), new TransientLifetimeManager());
             container.RegisterType(typeof(IRepository<>), typeof(Repository<>), new TransientLifetimeManager());
             container.RegisterType(typeof(IUnitOfWork), typeof(UnitOfWork), new TransientLifetimeManager());
 

@@ -15,15 +15,15 @@ namespace LogManagement.Controllers
         {
             this.logger = logger;
         }
-
+        #region Async Log Api
         [HttpPost]
         [Route("LogWarning")]
-        public HttpResponseMessage LogWarning([FromBody] string message)
+        public async System.Threading.Tasks.Task<HttpResponseMessage> LogWarningAsync([FromBody] string message)
         {
             try
             {
-                logger.AddWarningLog(message);
-                return Request.CreateResponse(HttpStatusCode.OK, "Added successfully") ;
+                await logger.AddWarningLogAsync(message);
+                return Request.CreateResponse(HttpStatusCode.OK, "Added successfully");
             }
             catch (FormatException formatException)
             {
@@ -40,17 +40,17 @@ namespace LogManagement.Controllers
             }
             catch (Exception ex)
             {
-                return Request.CreateResponse(HttpStatusCode.InternalServerError,ex);
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex);
             }
         }
 
         [HttpPost]
         [Route("LogInfo")]
-        public HttpResponseMessage LogInfo([FromBody] string message)
+        public async System.Threading.Tasks.Task<HttpResponseMessage> LogInfoAsync([FromBody] string message)
         {
             try
             {
-                this.logger.AddInfoLog(message);
+                await logger.AddInfoLogAsync(message);
                 return Request.CreateResponse(HttpStatusCode.OK, "OK");
             }
             catch (FormatException fEx)
@@ -65,11 +65,11 @@ namespace LogManagement.Controllers
 
         [HttpPost]
         [Route("LogFatel")]
-        public HttpResponseMessage LogFatel([FromBody] string message)
+        public async System.Threading.Tasks.Task<HttpResponseMessage> LogFatelAsync([FromBody] string message)
         {
             try
             {
-                logger.AddFatelLog(message);
+                await logger.AddFatelLogAsync(message);
                 return Request.CreateResponse(HttpStatusCode.OK, "OK");
             }
             catch (FormatException fEx)
@@ -82,5 +82,6 @@ namespace LogManagement.Controllers
             }
         }
 
+        #endregion
     }
 }

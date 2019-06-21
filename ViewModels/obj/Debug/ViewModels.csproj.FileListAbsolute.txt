@@ -1,5 +1,6 @@
 E:\Hend\POC Shahine\LogManagement\ViewModels\bin\Debug\ViewModels.dll
 E:\Hend\POC Shahine\LogManagement\ViewModels\bin\Debug\ViewModels.pdb
+E:\Hend\POC Shahine\LogManagement\ViewModels\obj\Debug\ViewModels.csprojAssemblyReference.cache
 E:\Hend\POC Shahine\LogManagement\ViewModels\obj\Debug\ViewModels.csproj.CoreCompileInputs.cache
 E:\Hend\POC Shahine\LogManagement\ViewModels\obj\Debug\ViewModels.dll
 E:\Hend\POC Shahine\LogManagement\ViewModels\obj\Debug\ViewModels.pdb

@@ -5,6 +5,7 @@ E:\Hend\POC Shahine\LogManagement\IDataAccess\bin\Debug\EntityFramework.dll
 E:\Hend\POC Shahine\LogManagement\IDataAccess\bin\Debug\EntityFramework.SqlServer.dll
 E:\Hend\POC Shahine\LogManagement\IDataAccess\bin\Debug\EntityFramework.xml
 E:\Hend\POC Shahine\LogManagement\IDataAccess\bin\Debug\EntityFramework.SqlServer.xml
+E:\Hend\POC Shahine\LogManagement\IDataAccess\obj\Debug\IDataAccess.csprojAssemblyReference.cache
 E:\Hend\POC Shahine\LogManagement\IDataAccess\obj\Debug\IDataAccess.csproj.CoreCompileInputs.cache
 E:\Hend\POC Shahine\LogManagement\IDataAccess\obj\Debug\IDataAccess.csproj.CopyComplete
 E:\Hend\POC Shahine\LogManagement\IDataAccess\obj\Debug\IDataAccess.dll
