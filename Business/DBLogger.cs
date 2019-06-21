@@ -7,7 +7,7 @@ using ViewModels;
 
 namespace Business
 {
-    public class DBLogger<T> : ILogger<T>
+    public class DBLogger<T> : ILogger<T> ,IDisposable
     {
         private IRepository<DomainModels.Logger> repoLogger;
         private IParser<T> parser;
@@ -21,35 +21,52 @@ namespace Business
 
         }
 
-        public void AddWarningLogAsync(string data)
-        {
-            AddLog(data, LogLevel.Warning.ToString());
-        }
+        //#region SyncMethods
 
-        public void AddInfoLogAsync(string data)
-        {
-            AddLog(data, LogLevel.Info.ToString());
-        }
+        //public void AddWarningLog(string data)
+        //{
+        //    AddLog(data, LogLevel.Warning.ToString());
+        //}
 
-        public void AddFatelLogAsync(string data)
-        {
-            AddLog(data, LogLevel.Fatel.ToString());
-        }
+        //public void AddInfoLog(string data)
+        //{
+        //    AddLog(data, LogLevel.Info.ToString());
+        //}
 
-        private void AddLog(string data, string logType)
-        {
-            if (data == null)
-                throw new ArgumentNullException();
+        //public void AddFatelLog(string data)
+        //{
+        //    AddLog(data, LogLevel.Fatel.ToString());
+        //}
 
-            IParser<T> parser = this.parserFactory.Build(data);
+        //private void AddLog(string data, string logType)
+        //{
+        //    if (data == null)
+        //        throw new ArgumentNullException();
 
-            var parsedData = parser.Parse(data);
+        //    IParser<T> parser = parserFactory.Build(data);
 
-            var prop = new Helper().ConvertTModelPropertyAndValueToString<T>(parsedData);
+        //    var parsedData = parser.Parse(data);
 
-            saveToDB(prop, logType);
-        }
+        //    var props = new Helper().ConvertTModelPropertyAndValueToString<T>(parsedData);
 
+        //    saveToDB(props, logType);
+        //}
+
+        //private void saveToDB(object data, string logType)
+        //{
+        //    repoLogger.Add(new DomainModels.Logger()
+        //    {
+        //        LogLevel = logType,
+        //        LogTime = DateTime.Now,
+        //        Message = data.ToString()
+        //    });
+
+        //    repoLogger.SaveChanges();
+        //}
+
+        //#endregion
+
+        #region AsyncMethods
 
         private async Task AddLogAsync(string data, string logType)
         {
@@ -60,20 +77,9 @@ namespace Business
 
             var parsedData = parser.Parse(data);
 
-            var prop = new Helper().ConvertTModelPropertyAndValueToString<T>(parsedData);
+            var props = new Helper().ConvertTModelPropertyAndValueToString<T>(parsedData);
 
-            await saveToDBAsync(prop, logType);
-        }
-        private void saveToDB(object data, string logType)
-        {
-            repoLogger.Add(new DomainModels.Logger()
-            {
-                LogLevel = logType,
-                LogTime = DateTime.Now,
-                Message = data.ToString()
-            });
-
-            repoLogger.SaveChanges();
+            await saveToDBAsync(props, logType);
         }
 
         private async Task saveToDBAsync(object data, string logType)
@@ -102,6 +108,16 @@ namespace Business
         {
             await AddLogAsync(data, LogLevel.Fatel.ToString());
         }
+
+
+        #endregion
+
+        public void Dispose()
+        {
+            repoLogger.Dispose();
+        }
+
+
     }
 
 }

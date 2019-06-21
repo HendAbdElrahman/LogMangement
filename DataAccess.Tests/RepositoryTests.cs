@@ -70,7 +70,7 @@ namespace DataAccess.Tests
             repo.SaveChanges();
 
             //act
-            var logLevel = "Error";
+            var logLevel = "Info";
 
             var TempFile = repo.Find(logger.Id);
 

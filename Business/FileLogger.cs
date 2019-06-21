@@ -11,7 +11,6 @@ namespace Business
 {
     public class FileLogger<T> : ILogger<T>
     {
-
         private IParser<T> parser;
         private IParserFactory<T> parserFactory;
 
@@ -23,9 +22,7 @@ namespace Business
 
         public async Task AddWarningLogAsync(string data)
         {
-
-                await AddLogAsync(data, LogLevel.Warning.ToString());
-          
+            await AddLogAsync(data, LogLevel.Warning.ToString());
         }
 
         public async Task AddInfoLogAsync(string data)
@@ -38,44 +35,27 @@ namespace Business
             await AddLogAsync(data, LogLevel.Fatel.ToString());
         }
 
-
         private async Task AddLogAsync(string data, string logType)
         {
 
-                if (data == null)
-                    throw new ArgumentException("error message");
+            if (data == null)
+                throw new ArgumentException();
 
-                IParser<T> parser = this.parserFactory.Build(data);
+            IParser<T> parser = parserFactory.Build(data);
 
-                var parsedData = parser.Parse(data);
+            var parsedData = parser.Parse(data);
 
-                var prop = new Helper().ConvertTModelPropertyAndValueToString<T>(parsedData);
+            var prop = new Helper().ConvertTModelPropertyAndValueToString<T>(parsedData);
 
-                await SaveToFileAsync(prop, logType); 
+            await SaveToFileAsync(prop, logType); 
     
-        }
-
-
-
-        private void saveToFile(object data, string logType)
-        {
-            var filePath = ConfigurationManager.AppSettings["RollingFile"];
-
-            using (StreamWriter sw1 = File.AppendText(filePath))
-            {
-                var str = $" {DateTime.Now.ToString()} - {logType} -  {data}";
-
-                sw1.WriteLine(str);
-
-                sw1.Close();
-            }
         }
 
         private async Task SaveToFileAsync(object data, string logType)
         {
             var filePath = ConfigurationManager.AppSettings["RollingFile"];
 
-            var str = $" {DateTime.Now.ToString()} - {logType} -  {data}";
+            var str = $" {DateTime.Now.ToString()} - {logType} -  {data} {Environment.NewLine}";
 
             byte[] encodedText = Encoding.Default.GetBytes(str);
 
@@ -86,5 +66,7 @@ namespace Business
                 await sourceStream.WriteAsync(encodedText, 0, encodedText.Length);
             };
         }
+        
+
     }
 }

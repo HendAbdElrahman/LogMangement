@@ -3,12 +3,12 @@ using System.Threading.Tasks;
 
 namespace IBusiness
 {
-    public interface ILogger<T>
+    public interface ILogger<T> 
     {
-         Task AddWarningLogAsync(string msg);
+         Task AddWarningLogAsync(string data);
 
-         Task AddInfoLogAsync(string msg);
+         Task AddInfoLogAsync(string data);
 
-         Task AddFatelLogAsync(string msg);
+         Task AddFatelLogAsync(string data);
     }
 }

@@ -11,63 +11,103 @@ namespace Business.Tests
     [TestClass]
     public class FileLoggerTest
     {
-        private ILogger<Company> fileLogger;
-        Mock<IParser<Company>> parser;
-        Mock<IParserFactory<Company>> parserFactory;
+        private ILogger<Modules> fileLogger;
+        Mock<IParser<Modules>> parser;
+        Mock<IParserFactory<Modules>> parserFactory;
 
-        string jsonData = @"{""Name"":""Integrant Inc"",""Id"":""1""}";
-        private Company company;
+        string jsonData = @"{
+   'channel': {
+      'resources': [
+         {
+            'name': 'x',
+            'refresh_interval': 180,
+            'text': 'text1'
+         },
+         {
+            'name': 'y',
+            'refresh_interval': 181,
+            'text': 'text2'
+         },
+         {
+            'name': 'z',
+            'refresh_interval': 182,
+            'text': 'text3'
+         }
+      ]
+   }
+}";
+
+        private Modules module;
 
         DomainModels.Logger log = new DomainModels.Logger()
         {
-            Id = 0,
+            Id = 1,
             LogLevel = "Warnning",
-            Message = "Message"
-
+            Message = "<Modules xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'><channel><resources> <resource name='x' refresh_interval='180'>text1</resource><resource name='y' refresh_interval='181'>text2</resource><resource name='z' refresh_interval='182'>text3</resource></resources></channel></Modules>"
         };
 
         [TestInitialize]
         public void TestInitialize()
         {
-            company = new Company()
+            module = new Modules()
             {
-                Id = 3,
-                Name = "Integrant Inc"
+                channel = new Channel()
+                {
+                    resources = new System.Collections.Generic.List<Resources>() { new Resources()
+                    {
+                        name = "x",
+                        refresh_interval = "180",
+                        someText = "text1"
+                    },
+                    new Resources()
+                    {
+                        name = "y",
+                        refresh_interval = "181",
+                        someText = "text2"
+                     },
+                    new Resources()
+                    {
+                        name = "z",
+                        refresh_interval = "182",
+                        someText = "text3"
+                    }
+                    }
+                }
             };
 
-            parser = new Mock<IParser<Company>>();
+            parser = new Mock<IParser<Modules>>();
 
-            parser.Setup(x => x.Parse(jsonData)).Returns(company);
+            parser.Setup(x => x.Parse(jsonData)).Returns(module);
 
-            parserFactory = new Mock<IParserFactory<Company>>();
+            parserFactory = new Mock<IParserFactory<Modules>>();
         }
 
 
         #region SyncMethods
 
         [TestMethod]
-        public void AddWarningLog_PassValidXMLSources_WorkCorrectly()
+        public async Task AddWarningLog_PassValidJsonDataAsync_WorkCorrectly()
         {
             //arrange
-            parserFactory.Setup(O => O.Build(jsonData)).Returns(new JSONParser<Company>());
+            parserFactory.Setup(O => O.Build(jsonData)).Returns(new JSONParser<Modules>());
 
-            fileLogger = new FileLogger<Company>(parser.Object, parserFactory.Object);
+            fileLogger = new FileLogger<Modules>(parser.Object, parserFactory.Object);
 
             //act
-            fileLogger.AddWarningLogAsync(jsonData);
+            await fileLogger.AddWarningLogAsync(jsonData);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
-        public async Task Build_PassNullXMLData_ThrowArgumentNullExceptionAsync()
+        public async Task Build_PassNullJsonDataAsync_ThrowArgumentNullException()
         {
             
             //arrange
             jsonData = null;
 
-            parserFactory.Setup(O => O.Build(jsonData)).Returns(new XMLParser<Company>());
+            parserFactory.Setup(O => O.Build(jsonData)).Returns(new XMLParser<Modules>());
 
-            fileLogger = new FileLogger<Company>(parser.Object, parserFactory.Object);
+            fileLogger = new FileLogger<Modules>(parser.Object, parserFactory.Object);
 
             //act
             await fileLogger.AddWarningLogAsync(jsonData);

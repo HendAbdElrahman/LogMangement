@@ -1,6 +1,6 @@
 E:\Hend\POC Shahine\LogManagement\DomainModels\bin\Debug\DomainModels.dll
 E:\Hend\POC Shahine\LogManagement\DomainModels\bin\Debug\DomainModels.pdb
-E:\Hend\POC Shahine\LogManagement\DomainModels\obj\Debug\DomainModels.csprojAssemblyReference.cache
 E:\Hend\POC Shahine\LogManagement\DomainModels\obj\Debug\DomainModels.csproj.CoreCompileInputs.cache
 E:\Hend\POC Shahine\LogManagement\DomainModels\obj\Debug\DomainModels.dll
 E:\Hend\POC Shahine\LogManagement\DomainModels\obj\Debug\DomainModels.pdb
+E:\Hend\POC Shahine\LogManagement\DomainModels\obj\Debug\DomainModels.csprojAssemblyReference.cache

@@ -21,9 +21,7 @@ namespace Business
 
             else
                 return ParserTypes.unKnown;
-
         }
-
 
         public IParser<T> Build(string data)
         {

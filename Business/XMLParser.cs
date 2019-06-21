@@ -9,8 +9,7 @@ namespace Business
 
         public T Parse(string data)
         {
-            var result = DeserializeObject(data);
-            return result;
+            return DeserializeObject(data);
         }
         private static T DeserializeObject(string xml)
         {
